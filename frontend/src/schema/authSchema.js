@@ -6,3 +6,8 @@ export const signUpSchema  = z.object({
     email : z.string().email({message : "Enter a valid email"}).trim(),
     password : z.string().min(6, {message :"Password required at least 6 characters."}).trim()
 })
+
+export const loginSchema = z.object({
+    email : z.string().email({message : "Enter valid Email"}),
+    password : z.string().min(1, {message : "Password field is empty"})
+})

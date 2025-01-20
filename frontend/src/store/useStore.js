@@ -41,5 +41,17 @@ export const useAuth = create((set) => ({
     } catch (error) {
       toast.error(error.response.data.message)
     }
+  },
+  logIn : async (data) => {
+    set({isLoggingIn : true})
+    try {
+      const { data : userData } = await axios.post("/api/auth/login", data)
+      set({authUser : userData})
+      toast.success("User Successfully Logged In")
+    } catch (error) {
+      toast.error(error.response.data.message)
+    } finally {
+      set({isLoggingIn : false})
+    }
   }
 }));
